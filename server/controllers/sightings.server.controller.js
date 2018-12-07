@@ -16,7 +16,7 @@ exports.all = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
 
     // SQLite query goes here!
-    // This one should return all flowers in the FLOWERS table
+    // This one should return all flowers in the SIGHTINGS table
     let sql = `SELECT * FROM SIGHTINGS`;
 
     db.all(sql, [], function(err, rows){
