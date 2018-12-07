@@ -10,24 +10,43 @@ var sqlite3 = require('sqlite3').verbose(),
 // Have at least one user initiated input done as a transaction
 // Find a way to analyze your database's performance; measure performance with and without triggers and indexes
 
-// exports.all lets us use this function whenever we: var flowers = require('*this file's path*')
-// http://www.sqlitetutorial.net/sqlite-nodejs/query/
-exports.all = function(req, res) {
+// exports.recents lets us use this function whenever we: var flowers = require('*this file's path*')
+exports.recents = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
 
-    // SQLite query goes here!
-    // This one should return all flowers in the SIGHTINGS table
-    let sql = `SELECT * FROM SIGHTINGS`;
+    // Allow the user to select from a list of flowers. Using the selected
+    // flower, display the 10 most recent sightings of the selected flower.
+    // Information should include the date, location, and who sighted the flower
+    let sql = ``;
 
     db.all(sql, [], function(err, rows){
         if (err) {
-            res.status(400).send(err);
-            // throw err;
+            throw err;
         }
         rows.forEach(function(row) {
-            console.log(row);
+            console.log(row.name);
         });
-        res.json(rows);
+    });
+
+    // always close the database
+    db.close();
+}
+
+// http://www.sqlitetutorial.net/sqlite-nodejs/insert/
+exports.create = function(req, res) {
+    // You're gonna wanna use 'req' to get the data that we plan to insert
+    let db = new sqlite3.Database(config.db.path);
+
+    // Allow a user to insert a new sighting of a flower.
+    let sql = ``;
+
+    db.run(sql, [], function(err, rows){
+        if (err) {
+            throw err;
+        }
+        rows.forEach(function(row) {
+            console.log(row.name);
+        });
     });
 
     // always close the database

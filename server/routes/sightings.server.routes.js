@@ -9,7 +9,7 @@ var sightings = require('../controllers/sightings.server.controller.js'),
 // defined in '../controllers/flowers.server.controller.js'
 
 router.route('/')
-    .get(sightings.all);
+    .get(sightings.recents);
 
 module.exports = router;
 
