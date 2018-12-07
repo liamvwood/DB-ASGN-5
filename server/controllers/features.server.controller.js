@@ -21,11 +21,13 @@ exports.all = function(req, res) {
 
     db.all(sql, [], function(err, rows){
         if (err) {
-            throw err;
+            res.status(400).send(err);
+            // throw err;
         }
         rows.forEach(function(row) {
             console.log(row);
         });
+        res.json(rows);
     });
 
     // always close the database
