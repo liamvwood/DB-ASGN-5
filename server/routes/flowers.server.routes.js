@@ -1,6 +1,6 @@
 var flowers = require('../controllers/flowers.server.controller.js'),
     express = require('express'),
-    reouter = express.Router;
+    router = express.Router();
 
 // when a GET request is made to the '/api/flowers/', call flowers.all method
 // defined in '../controllers/flowers.server.controller.js'
@@ -31,4 +31,7 @@ router.route('/:flowerId')
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
 
-router.param('flowerID', flowers.flowerByID);
+// router.param('flowerID', flowers.flowerByID);
+
+module.exports = router;
+
