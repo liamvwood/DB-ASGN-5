@@ -17,7 +17,7 @@ exports.recents = function(req, res) {
     // Allow the user to select from a list of flowers. Using the selected
     // flower, display the 10 most recent sightings of the selected flower.
     // Information should include the date, location, and who sighted the flower
-    let sql = `hello world`;
+    let sql = `SELECT * FROM FLOWERS`;
 
     db.all(sql, [], function(err, rows){
         if (err) {
@@ -38,7 +38,7 @@ exports.create = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
 
     // Allow a user to insert a new sighting of a flower.
-    let sql = ``;
+    let sql = `SELECT * FROM FLOWERS`;
 
     db.run(sql, [], function(err, rows){
         if (err) {
