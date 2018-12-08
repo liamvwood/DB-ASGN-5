@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
-<body ng-app="" ng-controller="">
+<body ng-app="flowersApp" ng-controller="FlowersController">
     <div class="container">
         <div class="row">
             <h1>Southern Sierra Wildflower Club</h1>
         </div>
-        <div class="row" ng-controller="">
+        <div class="row">
             <div class="col-md-6">
                 <div class="input-group" id="searchBar">
                     <!-- 
@@ -36,7 +36,7 @@
                         <tr ng-repeat="flower in flowers | filter: search | orderBy: 'COMNAME'" ng-click="showDetails(flowers.indexOf(flower))">
                             <td class="comName">{{flower["COMNAME"]}}</td>
                             <td class="genus">{{flower["GENUS"]}}</td>
-                            <td class="genus">{{flower["SPECIES"]}}></td>
+                            <td class="genus">{{flower["SPECIES"]}}</td>
                         </tr>
                     </table>
                 </div>

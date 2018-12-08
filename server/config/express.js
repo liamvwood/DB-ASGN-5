@@ -12,6 +12,7 @@ module.exports.init = function() {
 
     var app = express();
 
+    // why tf not
     app.use(bodyParser.json());
 
     app.use(express.static('client'));

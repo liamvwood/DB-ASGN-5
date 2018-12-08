@@ -36,6 +36,29 @@ exports.all = function(req, res) {
     db.close()
 }
 
+exports.getFlower = function(req,res) {
+    let db = new sqlite3.Database(config.db.path);
+    let name = req.name;
+    console.log(`Debug: ${name}`);
+    // SQLite query goes here!
+    // This one should return all flowers in the FLOWERS table
+    let sql = `SELECT * FROM FLOWERS WHERE COMNAME = \"${name}\"`;
+
+    db.all(sql, [], function(err, rows){
+        if (err) {
+            res.status(400).send(err);
+            // throw err;
+        }
+        rows.forEach(function(row) {
+            console.log(row);
+        });
+        res.json(rows);
+    });
+
+    // always close the database
+    db.close()
+}
+
 // http://www.sqlitetutorial.net/sqlite-nodejs/update/
 exports.update = function(req, res) {
     let db = sqlite3.Database(config.db.path);
@@ -55,4 +78,9 @@ exports.update = function(req, res) {
     // always close the database
     db.close();
 
+}
+
+exports.attachName = function(req, res, next, name) {
+    req.name = name;
+    next();
 }
