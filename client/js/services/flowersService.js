@@ -3,7 +3,9 @@ angular.module('flowers').factory('Flowers', function($http) {
         getAll: function() {
             return $http.get('./api/flowers/');
         },
-        getFlower
+        getFlower: function(name) {
+            
+        }
     }
     return methods;
 })

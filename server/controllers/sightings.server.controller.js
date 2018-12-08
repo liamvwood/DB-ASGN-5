@@ -13,7 +13,7 @@ var sqlite3 = require('sqlite3').verbose(),
 // exports.recents lets us use this function whenever we: var flowers = require('*this file's path*')
 exports.recents = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
-
+    let name = req.name;
     // Allow the user to select from a list of flowers. Using the selected
     // flower, display the 10 most recent sightings of the selected flower.
     // Information should include the date, location, and who sighted the flower
@@ -51,4 +51,9 @@ exports.create = function(req, res) {
 
     // always close the database
     db.close()
+}
+
+exports.attachName = function(req, res, next, name) {
+    req.name = name;
+    next();
 }
