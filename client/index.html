@@ -33,7 +33,7 @@
                           * populate the rows with the code and name of each listing
                           * include a way to remove individual listings
                     -->
-                        <tr ng-repeat="flower in flowers | filter: search | orderBy: 'COMNAME'" ng-click="showDetails(flowers.indexOf(flower))">
+                        <tr ng-repeat="flower in flowers | filter: search | orderBy: 'COMNAME'" ng-click="showDetails(flower)">
                             <td class="comName">{{flower["COMNAME"]}}</td>
                             <td class="genus">{{flower["GENUS"]}}</td>
                             <td class="genus">{{flower["SPECIES"]}}</td>
@@ -68,17 +68,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="location">Location</label>
-                                            <!-- Let's put a dropdown here of all locations for them to choose from -->
-                                            <input type="text" class="form-control" ng-model="location_search" id="location" aria-describedby="location" placeholder="Scodie Mountains">
-                                            <select class="form-control" ng-model="entry.LOCATION">
-                                                <option ng-repeat="sighting in sightings | filter: location_search | orderBy: ">sighting.LOCATION</option>
-                                            </select>
+                                        <!-- Let's put a dropdown here of all locations for them to choose from -->
+                                        <input type="text" class="form-control" ng-model="location_search" id="location"
+                                            aria-describedby="location" placeholder="Scodie Mountains">
+                                        <select class="form-control" ng-model="entry.LOCATION">
+                                            <option ng-repeat="sighting in sightings | filter: location_search | orderBy: ">sighting.LOCATION</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="dateSighted">Date Sighted</label>
                                         <input type="text" ng-model="entry.SIGHTED" class="form-control" id="dateSighted"
                                             aria-describedby="dateSighted" placeholder="2018-11-10">
-                                        <small id="dateSighted" class="form-text text-muted"> Enter the Date Sighted in YEAR-MONTH-DAY</small>
+                                        <small id="dateSighted" class="form-text text-muted"> Enter the Date Sighted in
+                                            YEAR-MONTH-DAY</small>
                                     </div>
                                 </div>
                                 <div class="panel-footer">

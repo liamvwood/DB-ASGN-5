@@ -11,5 +11,9 @@ var sightings = require('../controllers/sightings.server.controller.js'),
 router.route('/')
     .get(sightings.recents);
 
+router.route('/recents/:flowerName')
+    .get(sightings.recents);
+
+router.param('flowerName', sightings.attachName);
 module.exports = router;
 
