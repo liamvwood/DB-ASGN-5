@@ -4,5 +4,7 @@ angular.module('flowers').controller('FlowersController', function($scope, Flowe
         $scope.flowers = res.data;
     })
 
-    
+    $scope.showDetails = function(flower) {
+        $scope.detailedInfo = flower;
+    }
 })
