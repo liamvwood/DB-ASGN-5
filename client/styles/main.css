@@ -1,0 +1,7 @@
+.tableWrapper {
+    padding-left: 0px;
+    max-height: 400px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }

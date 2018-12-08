@@ -13,5 +13,10 @@ router.route('/')
 
 // somehow we have to update a selected flower...
 
+router.route('/:flowerName')
+    .put(flowers.update)
+    .get(flowers.getFlower);
+
+router.param('flowerName', flowers.attachName);
 module.exports = router;
 
