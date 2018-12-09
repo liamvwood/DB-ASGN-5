@@ -1,4 +1,4 @@
-angular.module('flowersApp').controller('MainController', function($scope, Flowers, Sightings, Features){
+angular.module('flowersApp').controller('MainController', function($scope, Flowers, Sightings, Features) {
     $scope.flowers = [];
     $scope.features = [];
     $scope.entry = {};
