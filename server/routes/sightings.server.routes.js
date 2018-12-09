@@ -9,7 +9,8 @@ var sightings = require('../controllers/sightings.server.controller.js'),
 // defined in '../controllers/flowers.server.controller.js'
 
 router.route('/')
-    .get(sightings.recents);
+    .get(sightings.recents)
+    .post(sightings.create);
 
 router.route('/recents/:flowerName')
     .get(sightings.recents);

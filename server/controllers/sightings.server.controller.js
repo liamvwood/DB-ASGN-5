@@ -17,15 +17,17 @@ exports.recents = function(req, res) {
     // Allow the user to select from a list of flowers. Using the selected
     // flower, display the 10 most recent sightings of the selected flower.
     // Information should include the date, location, and who sighted the flower
-    let sql = `SELECT * FROM FLOWERS`;
+    let sql = `SELECT * 
+               FROM SIGHTINGS
+               WHERE NAME = \"${name}\" 
+               ORDER BY SIGHTED DESC 
+               LIMIT 10;`;
 
     db.all(sql, [], function(err, rows){
         if (err) {
             throw err;
         }
-        rows.forEach(function(row) {
-            console.log(row.name);
-        });
+        res.json(rows);
     });
 
     // always close the database
@@ -38,7 +40,7 @@ exports.create = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
 
     // Allow a user to insert a new sighting of a flower.
-    let sql = `SELECT * FROM FLOWERS`;
+    let sql = `INSERT INTO SIGHTINGS(PERSON, LOCATION, SIGHTED) VALUES(?),(?),(?)`;
 
     db.run(sql, [], function(err, rows){
         if (err) {
