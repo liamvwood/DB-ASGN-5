@@ -73,7 +73,7 @@
                                         <div class="ui-widget">
                                             <select id="combobox" class="form-control" ng-model="entry.LOCATION">
                                                 <option value="">Select One...</option>
-                                                <option ng-repeat="feature in features | filter: location_search | orderBy: feature.LOCATION">{{feature.LOCATION}}</option>
+                                                <option ng-repeat="feature in features | filter: location_search | orderBy: feature.LOCATION" value="feature.LOCATION">{{feature.LOCATION}}</option>
                                             </select>
                                         </div>
                                     </div>
