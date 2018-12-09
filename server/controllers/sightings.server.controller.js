@@ -40,9 +40,14 @@ exports.create = function(req, res) {
     let db = new sqlite3.Database(config.db.path);
 
     // Allow a user to insert a new sighting of a flower.
-    let sql = `INSERT INTO SIGHTINGS(PERSON, LOCATION, SIGHTED) VALUES(?),(?),(?)`;
+    let sql = `INSERT INTO SIGHTINGS(PERSON, LOCATION, SIGHTED) VALUES ?`;
+    var values = [
+        [/*person who sighted*/],
+        [/*location of sighting*/],
+        [/*date of sighting*/]
+    ];
 
-    db.run(sql, [], function(err, rows){
+    db.run(sql, [values], function(err, rows){
         if (err) {
             throw err;
         }
