@@ -38,11 +38,12 @@ exports.recents = function(req, res) {
 exports.create = function(req, res) {
     // You're gonna wanna use 'req' to get the data that we plan to insert
     let db = new sqlite3.Database(config.db.path);
+    console.log(req.body);
 
     // Allow a user to insert a new sighting of a flower.
-    let sql = `INSERT INTO SIGHTINGS(PERSON, LOCATION, SIGHTED) VALUES ?`;
+    let sql = `INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES ?`;
     var values = [
-        [/*person who sighted*/],
+        [/*common name of flower*/, /*person who sighted*/],
         [/*location of sighting*/],
         [/*date of sighting*/]
     ];
