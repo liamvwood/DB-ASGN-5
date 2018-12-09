@@ -33,6 +33,8 @@ $( function() {
         this._on( this.input, {
           autocompleteselect: function( event, ui ) {
             ui.item.option.selected = true;
+            var event = new CustomEvent('selected', { detail: ui.item.option.value });
+            document.getElementById("moreInfo").dispatchEvent(event);
             this._trigger( "select", event, {
               item: ui.item.option
             });

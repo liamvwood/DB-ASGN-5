@@ -1,6 +1,7 @@
 angular.module('flowersApp').controller('MainController', function($scope, Flowers, Sightings, Features){
     $scope.flowers = [];
     $scope.features = [];
+    $scope.entry = {};
 
     Flowers.getAll().then(function(res) {
         $scope.flowers = res.data;
@@ -9,6 +10,11 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
     Features.getAll().then(function(res){
         $scope.features = res.data;
     });
+
+    document.getElementById('moreInfo').addEventListener('selected', function(e) {
+        console.log("event");
+        $scope.entry.LOCATION = e.detail;
+    })
 
     $scope.showDetails = function(flower) {
         let builder = flower;
@@ -25,7 +31,6 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
     }
 
     $scope.addSighting = function() {
-        console.log("Debug: Creating new Sighting");
         Sightings.create($scope.entry)
         .catch(function(err) {
             console.log(err);

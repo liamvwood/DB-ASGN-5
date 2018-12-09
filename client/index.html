@@ -71,9 +71,7 @@
                                         <label for="location">Location</label>
                                         <!-- Let's put a dropdown here of all locations for them to choose from -->
                                         <div class="ui-widget">
-                                            <select id="combobox" class="form-control" ng-model="entry.LOCATION">
-                                                <option value="">Select One...</option>
-                                                <option ng-repeat="feature in features | filter: location_search | orderBy: feature.LOCATION" value="feature.LOCATION">{{feature.LOCATION}}</option>
+                                            <select id="combobox" ng-model="entry.LOCATION" class="form-control" ng-options="feature.LOCATION for feature in features track by feature.LOCATION">
                                             </select>
                                         </div>
                                     </div>
