@@ -2,6 +2,8 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
     $scope.flowers = [];
     $scope.features = [];
     $scope.entry = {};
+    $scope.currFlowerImageUrl = '';
+
 
     Flowers.getAll().then(function(res) {
         $scope.flowers = res.data;
@@ -26,6 +28,11 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
             .catch(function(err) {
                 console.log(err);
             })
+        Flowers.getUrl(builder["COMNAME"]).then(function(res){
+            console.log(res);
+            $scope.currFlowerImageUrl = res.data.items[0].image.thumbnailLink;
+            console.log($scope.currFlowerImageUrl);
+        })
         $scope.detailedInfo = builder;
         angular.element('#moreInfo').collapse("show");
     }

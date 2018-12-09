@@ -71,7 +71,8 @@
                                         <label for="location">Location</label>
                                         <!-- Let's put a dropdown here of all locations for them to choose from -->
                                         <div class="ui-widget">
-                                            <select id="combobox" ng-model="entry.LOCATION" class="form-control" ng-options="feature.LOCATION for feature in features track by feature.LOCATION">
+                                            <select id="combobox" ng-model="entry.LOCATION" class="form-control"
+                                                ng-options="feature.LOCATION for feature in features track by feature.LOCATION">
                                             </select>
                                         </div>
                                     </div>
@@ -92,26 +93,32 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <div class="jumbotron">
+                <div class="jumbotron infoWrapper">
                     <h2>Detailed Information</h2>
                     <!-- 
                   Include a way to display detailed information about an individual listing:
                        * consider how to use ng-click within the the table to implement this feature
                  -->
                     <div id="moreInfo" class="collapse">
-                        <div class="form-group">
-                            <label for="buildingCode">Name</label>
-                            <p>{{detailedInfo['COMNAME']}}</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="buildingName">Latin Name</label>
-                            <p>{{detailedInfo['GENUS'] + ' ' + detailedInfo['SPECIES']}}</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="recentSightings">Recent Sightings</label>
-                            <p>{{detailedInfo['RECENTS']}}</p>
-                        </div>
-                        <!-- <div ng-if="detailedInfo.coordinates !== undefined">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="buildingCode">Name</label>
+                                    <p>{{detailedInfo['COMNAME']}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="buildingName">Latin Name</label>
+                                    <p>{{detailedInfo['GENUS'] + ' ' + detailedInfo['SPECIES']}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recentSightings">Recent Sightings</label>
+                                    <ul id="sightingParent" ng-repeat="sighting in detailedInfo['RECENTS']">
+                                        <li>Spotted by: {{sighting.PERSON}}</li>
+                                        <li>Location: {{sighting.LOCATION}}</li>
+                                        <li>Date: {{sighting.SIGHTED}}</li>
+                                    </ul>
+                                </div>
+                                <!-- <div ng-if="detailedInfo.coordinates !== undefined">
                             <div class="form-group">
                                 <label for="coordinates">Coordinates</label>
                                 <div class="form-group">
@@ -128,8 +135,11 @@
                                 <p>{{detailedInfo.address}}</p>
                             </div>
                         </div> -->
-                        <button type="button" ng-click="deleteListing(listings.indexOf(detailedInfo))" class="btn btn-danger"
-                            data-toggle="collapse" data-target="#moreInfo">Delete Listing</button>
+                            </div>
+                            <div class="col-md-4">
+                                <img ng-src="{{currFlowerImageUrl}}">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,6 +181,17 @@
         <script src="js/controllers/mainController.js"></script>
         <script src="js/controllers/sightingsController.js"></script>
 
+        <script>
+            (function () {
+                var cx = '002721976270332564454:irkkdg5omgc';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
     </div>
 </body>
 
