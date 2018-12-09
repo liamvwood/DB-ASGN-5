@@ -4,4 +4,5 @@ angular.module('features').factory('Features', function($http) {
             return $http.get('./api/features/');
         }
     }
+    return methods;
 })

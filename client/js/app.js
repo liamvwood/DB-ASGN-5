@@ -4,4 +4,4 @@ angular.module('sightings', []);
 angular.module('users', []);
 
 
-var app = angular.module('flowersApp', ['flowers']);
+var app = angular.module('flowersApp', ['flowers', 'features', 'sightings']);

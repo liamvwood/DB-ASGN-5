@@ -4,10 +4,11 @@
 <head>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
-<body ng-app="flowersApp" ng-controller="FlowersController">
+<body ng-app="flowersApp" ng-controller="MainController">
     <div class="container">
         <div class="row">
             <h1>Southern Sierra Wildflower Club</h1>
@@ -69,11 +70,12 @@
                                     <div class="form-group">
                                         <label for="location">Location</label>
                                         <!-- Let's put a dropdown here of all locations for them to choose from -->
-                                        <input type="text" class="form-control" ng-model="location_search" id="location"
-                                            aria-describedby="location" placeholder="Scodie Mountains">
-                                        <select class="form-control" ng-model="entry.LOCATION">
-                                            <option ng-repeat="sighting in sightings | filter: location_search | orderBy: ">sighting.LOCATION</option>
-                                        </select>
+                                        <div class="ui-widget">
+                                            <select id="combobox" class="form-control" ng-model="entry.LOCATION">
+                                                <option value="">Select One...</option>
+                                                <option ng-repeat="feature in features | filter: location_search | orderBy: feature.LOCATION">{{feature.LOCATION}}</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="dateSighted">Date Sighted</label>
@@ -84,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <button type="submit" ng-click="addListing()" class="btn btn-primary">Submit</button>
+                                    <button type="submit" ng-click="addSighting()" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -145,6 +147,11 @@
 
         <!-- Ui Bootstrap Include -->
         <script src="public/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+        <!-- UI jQuery Includes -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="public/lib/combobox.js"></script>
 
         <!-- Angular Dependencies -->
         <script src="js/app.js"></script>
