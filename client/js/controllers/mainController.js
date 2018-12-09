@@ -28,7 +28,7 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
             .catch(function(err) {
                 console.log(err);
             })
-        Flowers.getUrl(builder["COMNAME"]).then(function(res){
+        Flowers.getUrl(`${builder["GENUS"]} ${builder["SPECIES"]}`).then(function(res){
             console.log(res);
             $scope.currFlowerImageUrl = res.data.items[0].image.thumbnailLink;
             console.log($scope.currFlowerImageUrl);

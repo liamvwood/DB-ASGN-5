@@ -9,6 +9,9 @@
   max-height: 570px;
   overflow: auto;
 }
+.form-group {
+  margin-bottom: 5px !important;
+}
 .custom-combobox {
   position: relative;
   display: inline-block;
