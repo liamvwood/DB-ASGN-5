@@ -3,6 +3,7 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
     $scope.features = [];
     $scope.entry = {};
     $scope.currFlowerImageUrl = '';
+    $scope.showFlowerImage = false;
 
 
     Flowers.getAll().then(function(res) {
@@ -19,6 +20,7 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
     })
 
     $scope.showDetails = function(flower) {
+        $scope.showFlowerImage = false;
         let builder = flower;
         Sightings.getRecents(builder["COMNAME"])
             .then(function(res) {
@@ -29,9 +31,8 @@ angular.module('flowersApp').controller('MainController', function($scope, Flowe
                 console.log(err);
             })
         Flowers.getUrl(`${builder["GENUS"]} ${builder["SPECIES"]}`).then(function(res){
-            console.log(res);
             $scope.currFlowerImageUrl = res.data.items[0].image.thumbnailLink;
-            console.log($scope.currFlowerImageUrl);
+            $scope.showFlowerImage = true;
         })
         $scope.detailedInfo = builder;
         angular.element('#moreInfo').collapse("show");
