@@ -64,7 +64,7 @@ exports.update = function(req, res) {
     let db = sqlite3.Database(config.db.path);
 
     // Allow a user to select and update flower information.
-    let sql = ``;
+    let sql = `UPDATE FLOWERS SET ${column} = \'${value}\' WHERE NAME = \'${name}\'`;
 
     db.run(sql, [], function(err, rows){
         if (err)
