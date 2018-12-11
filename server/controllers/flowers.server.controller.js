@@ -62,9 +62,10 @@ exports.getFlower = function(req,res) {
 // http://www.sqlitetutorial.net/sqlite-nodejs/update/
 exports.update = function(req, res) {
     let db = sqlite3.Database(config.db.path);
-
+    console.log(req.body);
+    let entry = req.body;
     // Allow a user to select and update flower information.
-    let sql = `UPDATE FLOWERS SET ${column} = \'${value}\' WHERE NAME = \'${name}\'`;
+    let sql = `UPDATE FLOWERS SET ${entry.COLUMN} = \'${entry.VALUE}\' WHERE NAME = \'${entry.NAME}\'`;
 
     db.run(sql, [], function(err, rows){
         if (err)
