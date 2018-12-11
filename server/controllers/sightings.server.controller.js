@@ -41,14 +41,7 @@ exports.create = function(req, res) {
     console.log(req.body);
     let entry = req.body;
     // Allow a user to insert a new sighting of a flower.
-<<<<<<< HEAD
-    let sql = `INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES (?),(?),(?),(?)`;
-    var values = [
-            entry.NAME, entry.PERSON, entry.LOCATION, entry.SIGHTED
-        ];
-=======
     let sql = `INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES (\"${entry.NAME}\",\"${entry.PERSON}\",\"${entry.LOCATION}\",\"${entry.SIGHTED}\")`;
->>>>>>> a36cb381cda89c721361a7df157faa671645d6a9
 
     db.run(sql, [], function(err, rows){
         if (err) {
