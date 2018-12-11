@@ -65,7 +65,7 @@ exports.update = function(req, res) {
     console.log(req.body);
     let entry = req.body;
     // Allow a user to select and update flower information.
-    let sql = `UPDATE FLOWERS SET ${entry.COLUMN} = \'${entry.VALUE}\' WHERE NAME = \'${entry.NAME}\'`;
+    let sql = `UPDATE FLOWERS SET ${entry.COLUMN} = \'${entry.VALUE}\' WHERE NAME = \'${entry.COMNAME}\'`;
 
     db.run(sql, [], function(err, rows){
         if (err)
