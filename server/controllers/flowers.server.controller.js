@@ -61,20 +61,26 @@ exports.getFlower = function(req,res) {
 
 // http://www.sqlitetutorial.net/sqlite-nodejs/update/
 exports.update = function(req, res) {
-    let db = sqlite3.Database(config.db.path);
+    let db = new sqlite3.Database(config.db.path);
+
+    /* 
+        req.body = [
+            {
+                'COLUMN': COMNAME // GENUS // SPECIES,
+                'VALUE': CHAR(20)
+            }
+        ]
+    */
     console.log(req.body);
-    let entry = req.body;
-    // Allow a user to select and update flower information.
-    let sql = `UPDATE FLOWERS SET ${entry.COLUMN} = \'${entry.VALUE}\' WHERE NAME = \'${entry.NAME}\'`;
+    let entries = req.body;
+    entries.forEach(function(entry) {
+        let sql = `UPDATE FLOWERS SET \"${entry.COLUMN}\" = \"${entry.VALUE}\" WHERE COMNAME = \"${req.name}\"`;
 
-    db.run(sql, [], function(err, rows){
-        if (err)
-            throw err;
-        
-        rows.forEach(function(row){
-
+        db.run(sql, [], function(err){
+            if (err)
+                throw err;
         });
-    });
+    })
 
     // always close the database
     db.close();
