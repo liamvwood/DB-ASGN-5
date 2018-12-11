@@ -1,10 +1,17 @@
 .tableWrapper {
-    padding-left: 0px;
-    max-height: 400px;
-    overflow: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+  padding-left: 0px;
+  max-height: 400px;
+  overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.infoWrapper {
+  max-height: 570px;
+  overflow: auto;
+}
+.form-group {
+  margin-bottom: 5px !important;
+}
 .custom-combobox {
   position: relative;
   display: inline-block;
@@ -20,4 +27,9 @@
   margin: 0;
   padding: 5px 10px;
   background-color: #fff;
+}
+#sightingParent {
+  padding-left: 33px;
+  border-bottom:rgba(47, 53, 60, 75) solid 1px;
+  margin-bottom: 5px;
 }
