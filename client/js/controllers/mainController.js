@@ -1,4 +1,4 @@
-angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features, Users) {
+angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features, Users, $rootScope) {
     $scope.flowers = [];
     $scope.editFlower = {};
     $scope.features = [];
@@ -9,6 +9,8 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
     $scope.edittingLatin = false;
     $scope.ship = [];
     $scope.isLoggedIn = false;
+    $scope.registerData = {};
+    $scope.loginData = {};
 
     $scope.editLatin = function () {
         if ($scope.edittingLatin) {
@@ -40,6 +42,10 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
         else
             $scope.edittingLatin = true;
     }
+
+    $rootScope.$on('userLoggedInSuccess', function() {
+        $scope.isLoggedIn = true;
+    });
 
     $scope.editName = function () {
         if ($scope.edittingName) {
@@ -103,8 +109,37 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
             });
     }
 
-    $scope.logout = function() {
+    $scope.logout = function () {
         $scope.isLoggedIn = false;
+    }
+
+    $scope.register = function () {
+        if ($scope.registerData.NAME != undefined && $scope.registerData.PASSWORD != undefined) {
+            Users.signup($scope.registerData).then(function (err) {
+                $scope.$dismiss('login');
+            });
+        }
+        else {
+            $scope.registerData = {};
+            $scope.registerFormError = true;
+        }
+    }
+    $scope.login = function () {
+        if ($scope.loginData.NAME != undefined && $scope.loginData.PASSWORD != undefined) {
+            Users.signin($scope.loginData).then(function (res) {
+                if (res.status == 200) {
+				    $rootScope.$emit('userLoggedInSuccess', {message: "Hello from login"});
+                    $scope.$dismiss('home');
+                }
+                else if (res.status == 401) {
+                    console.log('Fucked up buddy');
+                }
+            });
+        }
+        else {
+            $scope.loginData = {};
+            $scope.loginFormError = true;
+        }
     }
 
 })

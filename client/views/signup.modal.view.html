@@ -4,34 +4,29 @@
 </div>
 <div class="modal-body row">
     <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
-        <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+        <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
             <fieldset>
                 <div class="form-group" show-er rors>
                     <label for="username">Username <span style="color:red; margin: auto">*</span></label>
-                    <input type="text" id="username" name="username" class="form-control" ng-model="vm.registerData.username"
+                    <input type="text" id="username" name="username" class="form-control" ng-model="registerData.NAME"
                      placeholder="Username" lowercase required>
                 </div>
-                <div class="form-group" show-er rors>
-                        <label for="username">Display Name <span style="color:red; margin: auto">*</span></label>
-                        <input type="text" id="name" name="name" class="form-control" ng-model="vm.registerData.name"
-                         placeholder="FirstName LastName" required>
-                    </div>
                 <div class="form-group" show-errors>
                     <label for="password">Password <span style="color:red; margin: auto">*</span></label>
-                    <input type="password" id="password" name="password" class="form-control" ng-model="vm.registerData.password"
-                        placeholder="Password" uib-popover="{{vm.getPopoverMsg()}}" popover-trigger="outsideClick"
+                    <input type="password" id="password" name="password" class="form-control" ng-model="registerData.PASSWORD"
+                        placeholder="Password" uib-popover="{{getPopoverMsg()}}" popover-trigger="outsideClick"
                         required>
                 </div>
                 <div class="text-center form-group">
-                    <button type="submit" class="btn btn-primary" ng-click="vm.register()">Sign up</button>
+                    <button type="submit" class="btn btn-primary" ng-click="register()">Sign up</button>
                     &nbsp; or&nbsp;
                     <a ui-sref="signin" ng-click="$dismiss('cancel')" class="show-signup">Sign in</a>
                 </div>
             </br>
-                <div ng-if="vm.formError" class="alert alert-warning" role="alert">
+                <div ng-if="formError" class="alert alert-warning" role="alert">
                     <p class="help-block error-text">Missing fields!</p>
                 </div>
-                <div ng-if="vm.inputError" class="alert alert-warning" role="alert">
+                <div ng-if="inputError" class="alert alert-warning" role="alert">
                     <p class="help-block error-text">Username/Email already been used!</p>
                 </div>
             </fieldset>

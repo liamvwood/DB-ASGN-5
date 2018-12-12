@@ -3,7 +3,7 @@ angular.module('users').factory('Users', function($http) {
         signin: function(data) {
             return $http.post('./api/users/signin', data);
         },
-        signin: function(data) {
+        signup: function(data) {
             return $http.put('./api/users/signup', data);
         }
     }

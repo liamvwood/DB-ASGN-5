@@ -11,7 +11,7 @@ var users = require('../controllers/users.server.controller.js'),
 router.route('/signin')
     .post(users.signin)
 
-router.route('signup')
+router.route('/signup')
     .put(users.signup)
 
 module.exports = router;

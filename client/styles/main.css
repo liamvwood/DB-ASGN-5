@@ -5,6 +5,9 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.navbar {
+  border-radius: 0px !important;
+}
 .infoWrapper {
   max-height: 570px;
   overflow: auto;
