@@ -8,6 +8,7 @@
 .infoWrapper {
   max-height: 570px;
   overflow: auto;
+  background-color: rgba(238, 238, 238, 0.8);
 }
 .form-group {
   margin-bottom: 5px !important;
@@ -32,4 +33,15 @@
   padding-left: 33px;
   border-bottom:rgba(47, 53, 60, 75) solid 1px;
   margin-bottom: 5px;
+}
+
+body {
+  background-image: url("https://www.silhcdn.com/3/i/shapes/lg/3/2/d185623.jpg");
+  background-repeat: repeat-y repeat-x;
+}
+#background {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
+h1 {
+  margin-left: 15px;
 }
