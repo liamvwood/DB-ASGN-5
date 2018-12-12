@@ -1,4 +1,4 @@
-angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features) {
+angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features, Users) {
     $scope.flowers = [];
     $scope.editFlower = {};
     $scope.features = [];
@@ -8,6 +8,7 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
     $scope.edittingName = false;
     $scope.edittingLatin = false;
     $scope.ship = [];
+    $scope.isLoggedIn = false;
 
     $scope.editLatin = function () {
         if ($scope.edittingLatin) {
@@ -43,16 +44,18 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
     $scope.editName = function () {
         if ($scope.edittingName) {
             $scope.edittingName = false;
-            $scope.ship.push(
-                {
-                    'COLUMN': 'COMNAME',
-                    'VALUE': $scope.editFlower.COMNAME
-                })
-            Flowers.updateFlower($scope.detailedInfo['COMNAME'], $scope.ship)
-                .then(function (res) {
-                    $scope.ship = [];
-                    $scope.refresh();
-                })
+            if ($scope.editFlower.COMNAME != undefined && $scope.editFlower.COMNAME != $scope.detailedInfo.COMNAME) {
+                $scope.ship.push(
+                    {
+                        'COLUMN': 'COMNAME',
+                        'VALUE': $scope.editFlower.COMNAME
+                    })
+                Flowers.updateFlower($scope.detailedInfo['COMNAME'], $scope.ship)
+                    .then(function (res) {
+                        $scope.ship = [];
+                        $scope.refresh();
+                    })
+            }
         }
         else
             $scope.edittingName = true;
@@ -99,4 +102,9 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
                 console.log(err);
             });
     }
+
+    $scope.logout = function() {
+        $scope.isLoggedIn = false;
+    }
+
 })

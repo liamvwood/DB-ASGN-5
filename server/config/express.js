@@ -1,10 +1,11 @@
 var express = require('express'),
     config = require('./config'),
     bodyParser = require('body-parser'),
-    sqlite3 = require('sqlite3').verbose()
-    flowersRouter = require('../routes/flowers.server.routes.js')
-    sightingsRouter = require('../routes/sightings.server.routes.js')
-    featuresRouter = require('../routes/features.server.routes.js');
+    sqlite3 = require('sqlite3').verbose(),
+    flowersRouter = require('../routes/flowers.server.routes.js'),
+    sightingsRouter = require('../routes/sightings.server.routes.js'),
+    featuresRouter = require('../routes/features.server.routes.js'),
+    usersRouter = require('../routes/users.server.routes');
 
 module.exports.init = function() {
 
@@ -19,6 +20,7 @@ module.exports.init = function() {
     app.use('/api/flowers', flowersRouter);
     app.use('/api/sightings', sightingsRouter);
     app.use('/api/features', featuresRouter);
+    app.use('/api/users', usersRouter)
 
     return app;
 }

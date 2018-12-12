@@ -26,9 +26,6 @@ exports.all = function(req, res) {
             res.status(400).send(err);
             // throw err;
         }
-        rows.forEach(function(row) {
-            console.log(row);
-        });
         res.json(rows);
     });
 
@@ -49,9 +46,6 @@ exports.getFlower = function(req,res) {
             res.status(400).send(err);
             // throw err;
         }
-        rows.forEach(function(row) {
-            console.log(row);
-        });
         res.json(rows);
     });
 
