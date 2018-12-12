@@ -43,16 +43,18 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
     $scope.editName = function () {
         if ($scope.edittingName) {
             $scope.edittingName = false;
-            $scope.ship.push(
-                {
-                    'COLUMN': 'COMNAME',
-                    'VALUE': $scope.editFlower.COMNAME
-                })
-            Flowers.updateFlower($scope.detailedInfo['COMNAME'], $scope.ship)
-                .then(function (res) {
-                    $scope.ship = [];
-                    $scope.refresh();
-                })
+            if ($scope.editFlower.COMNAME != undefined && $scope.editFlower.COMNAME != $scope.detailedInfo.COMNAME) {
+                $scope.ship.push(
+                    {
+                        'COLUMN': 'COMNAME',
+                        'VALUE': $scope.editFlower.COMNAME
+                    })
+                Flowers.updateFlower($scope.detailedInfo['COMNAME'], $scope.ship)
+                    .then(function (res) {
+                        $scope.ship = [];
+                        $scope.refresh();
+                    })
+            }
         }
         else
             $scope.edittingName = true;
