@@ -9,6 +9,24 @@
 </head>
 
 <body ng-app="flowersApp" ng-controller="MainController">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">SSWC</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="signup" data-toggle="modal" ng-show="!isLoggedIn"><span class="glyphicon glyphicon-user"></span>
+                        Sign Up</a></li>
+                <li><a ui-sref="signin" data-toggle="modal" ng-show="!isLoggedIn"><span class="glyphicon glyphicon-log-in"></span>
+                        Login</a></li>
+                <li><a ui-sref="signin" ng-click="logout()" data-toggle="modal" ng-show="isLoggedIn"><span class="glyphicon glyphicon-log-in"></span>
+                        Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ui-view></ui-view>
+
     <div class="container" id="background">
         <div class="row">
             <h1>Southern Sierra Wildflower Club</h1>
@@ -91,7 +109,8 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="buildingCode" style="width: 100%;">Name <span class="glyphicon glyphicon-pencil" ng-click="editName()" style=margin-top:4px;float:right;"></span></label>
+                                    <label for="buildingCode" style="width: 100%;">Name <span class="glyphicon glyphicon-pencil"
+                                            ng-click="editName()" style=margin-top:4px;float:right;"></span></label>
                                     <p ng-show="!edittingName">{{detailedInfo['COMNAME']}}</p>
                                     <div ng-show="edittingName">
                                         <small id="editLatinName" class="form-text text-muted"> Common Name</small>
@@ -166,6 +185,7 @@
         <script src="js/controllers/flowersController.js"></script>
         <script src="js/controllers/mainController.js"></script>
         <script src="js/controllers/sightingsController.js"></script>
+        <script src="js/controllers/modalController.js"></script>
 
         <script>
             (function () {

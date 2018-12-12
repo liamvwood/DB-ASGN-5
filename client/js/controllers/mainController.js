@@ -1,4 +1,4 @@
-angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features) {
+angular.module('flowersApp').controller('MainController', function ($scope, Flowers, Sightings, Features, Users) {
     $scope.flowers = [];
     $scope.editFlower = {};
     $scope.features = [];
@@ -8,6 +8,7 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
     $scope.edittingName = false;
     $scope.edittingLatin = false;
     $scope.ship = [];
+    $scope.isLoggedIn = false;
 
     $scope.editLatin = function () {
         if ($scope.edittingLatin) {
@@ -101,4 +102,9 @@ angular.module('flowersApp').controller('MainController', function ($scope, Flow
                 console.log(err);
             });
     }
+
+    $scope.logout = function() {
+        $scope.isLoggedIn = false;
+    }
+
 })
